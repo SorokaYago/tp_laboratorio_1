@@ -18,7 +18,7 @@ contar con un menu de opciones.
 
 int main(void) {
 	setbuf(stdout, NULL);
-	int opcion;
+	int choose;
 	float x = 0;
 	float y = 0;
 	float z = 0;
@@ -32,20 +32,16 @@ int main(void) {
 	float precioUnitLatam = 0;
 	float precioDif = 0;
 
-	//x= kilome
-	//y= Aerolineas
-	//z= latam
-
 	do{
-		printf("(1) Ingresar kilometros: [sus km son= %.2f] \n", x);
-		printf("(2) Ingresar precio de vuelos: (Aerolineas = %.2f, Latam = %.2f) \n", y, z);
+		printf("(1) Ingresar kilometros: [Kilometros: %.2f km] \n", x);
+		printf("(2) Ingresar precio de vuelos: (Aerolineas: %.2f, Latam: %.2f) \n", y, z);
 		printf("(3) Calcular todos los costos \n");
 		printf("(4) Informar Resultados: \n");
 		printf("(5) Carga forzada de datos \n");
 		printf("(6) Salir\n \n");
 		fflush(stdin);
-		scanf("%d", &opcion);
-	switch (opcion) {
+		scanf("%d", &choose);
+	switch (choose) {
 	case 1:
 		x = pedirNumero("Ingrese kilometros: \n \n", "Error, ingrese un numero valido. \n \n");
 		break;
@@ -54,19 +50,16 @@ int main(void) {
 		z = pedirNumero("Ingrese precio de Latam: \n \n", "Error, ingrese un precio valido de Latam. \n \n");
 		break;
 	case 3:
-		//x= kilome
-		//z= latam
-		//y= Aerolineas
-
-		precioDebLatam = calcularDebito(z);
-		precioCredLatam = calcularCredito(z);
-		precioBitLatam = calcularBtc(z);
-		precioUnitLatam = calcularUnit(z, x); //kilometros
 
 		precioDebAerolineas = calcularDebito(y);
 		precioCredAerolineas = calcularCredito(y);
 		precioBitAerolineas = calcularBtc(y);
 		precioUnitAerolineas = calcularUnit(y, x); //kilometros
+
+		precioDebLatam = calcularDebito(z);
+		precioCredLatam = calcularCredito(z);
+		precioBitLatam = calcularBtc(z);
+		precioUnitLatam = calcularUnit(z, x); //kilometros
 
 		precioDif = calcularDif(y, z);
 
@@ -74,19 +67,19 @@ int main(void) {
 		break;
 	case 4:
 		printf("------------------------------------------------------------------------------------\n");
-		printf("Kilometros ingresados: %.2fkm \n \n", x);
+		printf("Kilometros ingresados: %.2f km \n \n", x);
 
 		printf("Precio Aerolineas: $%.2f \n", y); //y = aerolineas
-		printf("a) Precio pagando con debito para Aerolineas: $%.2f \n", precioDebAerolineas);
-		printf("b) Precio pagando con credito para Aerolineas: $%.2f \n", precioCredAerolineas);
+		printf("a) Precio pagando con debito para Aerolineas: $%.2f (10%% de descuento)\n", precioDebAerolineas);
+		printf("b) Precio pagando con credito para Aerolineas: $%.2f (25%% de interes)\n", precioCredAerolineas);
 		printf("c) Precio pagando con Bitcoin para Aerolineas: %.6f BTC \n", precioBitAerolineas);
-		printf("d) Precio unitario Aerolineas: $%.2f \n \n", precioUnitAerolineas);
+		printf("d) Precio por kilometro de Aerolineas: $%.2f \n \n", precioUnitAerolineas);
 
 		printf("Precio Latam: $%.2f \n", z); //z = latam
-		printf("a) Precio pagando con debito para Latam: $%.2f \n", precioDebLatam);
-		printf("b) Precio pagando con credito para Latam: $%.2f \n", precioCredLatam);
+		printf("a) Precio pagando con debito para Latam: $%.2f (10%% de descuento)\n", precioDebLatam);
+		printf("b) Precio pagando con credito para Latam: $%.2f (25%% de interes)\n", precioCredLatam);
 		printf("c) Precio pagando con Bitcoin para Latam: %.6f BTC \n", precioBitLatam);
-		printf("d) Precio unitario Latam: $%.2f \n \n", precioUnitLatam);
+		printf("d) Precio por kilometro de Latam: $%.2f \n \n", precioUnitLatam);
 
 		printf("Diferencia de precio: $%.2f \n", precioDif);
 		printf("------------------------------------------------------------------------------------\n");
@@ -100,9 +93,9 @@ int main(void) {
 		printf("\n---------------------------------------------------------------------------------\nUSTED HA SALIDO DEL PROGRAMA.\n---------------------------------------------------------------------------------\n \n");
 		break;
 	default:
-		printf("Incorrecto, por favor ingrese un numero del 1 al 6. \n \n");
+		printf("Incorrecto, por favor ingrese un numero del 1 al 6 para seleccionar una de las siguientes opciones. \n \n");
 		break;
 	}
 
-	}while(opcion != 6);
+	}while(choose != 6);
 }
