@@ -10,6 +10,7 @@ float pedirNumero (char msg[], char errorMsg[]) {
 	scanf("%f", &numero);
 	while (numero < 1 ) {
 		printf("%s", errorMsg);
+		fflush(stdin);
 		scanf("%f", &numero);
 	}
 	return numero;
