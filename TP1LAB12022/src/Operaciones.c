@@ -6,6 +6,7 @@ float pedirNumero (char msg[], char errorMsg[]) {
 	float numero;
 
 	printf("%s", msg);
+	fflush(stdin);
 	scanf("%f", &numero);
 	while (numero < 1 ) {
 		printf("%s", errorMsg);
@@ -16,20 +17,19 @@ float pedirNumero (char msg[], char errorMsg[]) {
 //////////////////////////////////////////////////////////////////////////////////////
 
 float calcularDebito(float valor){
-	float descuento;
+	float discount;
 	float discountedPrice;
-	descuento = 10;
-	discountedPrice = valor - (valor/100 * descuento);
+	discount = 0.9; //10% de descuento = 0.9
+	discountedPrice = valor * discount;
 	return discountedPrice;
 }
 //////////////////////////////////////////////////////////////////////////////////////
 
 float calcularCredito(float valor){
-	float augmentedPrice;
-	float augment;
-	augment = 25;
-	augmentedPrice = valor + (valor/100 *augment);
-	return augmentedPrice;
+	float increasedPrice;
+	float increase = 1.25; //25% de interes
+	increasedPrice = valor * increase;
+	return increasedPrice;
 }
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -56,7 +56,7 @@ float calcularDif (float precioA, float precioL) {
 	//y= Aerolineas
 	//z= latam
 
-	if (precioA > precioL) {
+	if (precioL > precioA) {
 		result = precioL - precioA;
 	} else {
 		result = precioA - precioL;
@@ -67,44 +67,48 @@ float calcularDif (float precioA, float precioL) {
 
 void forzarDatos(void) {
 		float x = 7090;
-		float y = 162965;
-		float z = 159339;
-		float precioDebAerolineas;
+		float y = 162965; //aerolineas
+		float z = 159339; //latam
+		float precioDebAerolineas; //10% descuento
 		float precioDebLatam;
-		float precioCredAerolineas;
+		float precioCredAerolineas; //25% de aumento
 		float precioCredLatam;
-		float precioBitAerolineas;
+		float precioBitAerolineas; // dividir pesos por bitcoin
 		float precioBitLatam;
 		float precioUnitAerolineas;
 		float precioUnitLatam;
 		float precioDif;
 
-		printf("Se esta realizando una carga forzada: \n \n");
+		printf("Se ha realizado una carga forzada, sus datos a continuacion: \n");
 
 		precioDebLatam = calcularDebito(z);
 		precioCredLatam = calcularCredito(z);
 		precioBitLatam = calcularBtc(z);
-		precioUnitLatam = calcularUnit(x, z); //kilometros
+		precioUnitLatam = calcularUnit(x, z); //dividido kilometros
 
 		precioDebAerolineas = calcularDebito(y);
 		precioCredAerolineas = calcularCredito(y);
 		precioBitAerolineas = calcularBtc(y);
-		precioUnitAerolineas = calcularUnit(x, y); //kilometros
+		precioUnitAerolineas = calcularUnit(x, y); //divido kilometros
 
 		precioDif = calcularDif(y, z);
 
-		printf("Latam: %.2f \n", z); //y
-		printf("a) Precio pagando con debito para Latam: %.2f \n", precioDebLatam);
-		printf("b) Precio pagando con credito para Latam: %.2f \n", precioCredLatam);
-		printf("c) Precio pagando con Bitcoin para Latam: %.2f \n", precioBitLatam);
-		printf("d) Precio unitario Latam: %.2f \n", precioUnitLatam);
+		printf("------------------------------------------------------------------------------------\n");
+		printf("Kilometros ingresados: %.2fkm \n \n", x);
 
-		printf("Aerolineas: %.2f \n", y); //aerolineas
-		printf("a) Precio pagando con debito para Aerolineas: %.2f \n", precioDebAerolineas);
-		printf("b) Precio pagando con credito para Aerolineas: %.2f \n", precioCredAerolineas);
-		printf("c) Precio pagando con Bitcoin para Aerolineas: %.2f \n", precioBitAerolineas);
-		printf("d) Precio unitario Aerolineas: %.2f \n", precioUnitAerolineas);
+		printf("Precio Aerolineas: $%.2f \n", y); //y = aerolineas
+		printf("a) Precio pagando con debito para Aerolineas: $%.2f \n", precioDebAerolineas);
+		printf("b) Precio pagando con credito para Aerolineas: $%.2f \n", precioCredAerolineas);
+		printf("c) Precio pagando con Bitcoin para Aerolineas: %.6f BTC \n", precioBitAerolineas);
+		printf("d) Precio unitario Aerolineas: $%.2f \n \n", precioUnitAerolineas);
 
-		printf("Diferencia de precio: %.2f \n \n", precioDif);
+		printf("Precio Latam: $%.2f \n", z); //z = latam
+		printf("a) Precio pagando con debito para Latam: $%.2f \n", precioDebLatam);
+		printf("b) Precio pagando con credito para Latam: $%.2f \n", precioCredLatam);
+		printf("c) Precio pagando con Bitcoin para Latam: %.6f BTC \n", precioBitLatam);
+		printf("d) Precio unitario Latam: $%.2f \n \n", precioUnitLatam);
+
+		printf("Diferencia de precio: $%.2f \n", precioDif);
+		printf("------------------------------------------------------------------------------------\n");
 }
 //////////////////////////////////////////////////////////////////////////////////////

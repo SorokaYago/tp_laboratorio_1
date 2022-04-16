@@ -61,35 +61,35 @@ int main(void) {
 		precioDebLatam = calcularDebito(z);
 		precioCredLatam = calcularCredito(z);
 		precioBitLatam = calcularBtc(z);
-		precioUnitLatam = calcularUnit(x, z); //kilometros
+		precioUnitLatam = calcularUnit(z, x); //kilometros
 
 		precioDebAerolineas = calcularDebito(y);
 		precioCredAerolineas = calcularCredito(y);
 		precioBitAerolineas = calcularBtc(y);
-		precioUnitAerolineas = calcularUnit(x, y); //kilometros
+		precioUnitAerolineas = calcularUnit(y, x); //kilometros
 
 		precioDif = calcularDif(y, z);
 
-		printf("Su operacion se ha calculado corectamente. \n \n");
+		printf("\n---------------------------------------------------------------------------------\nSu operacion se ha calculado corectamente.\n---------------------------------------------------------------------------------\n \n");
 		break;
 	case 4:
-		printf("Se ha calculado corectamente. \n \n");
+		printf("------------------------------------------------------------------------------------\n");
+		printf("Kilometros ingresados: %.2fkm \n \n", x);
 
-		printf("Kilometros ingresados: %.2f \n \n",x);
+		printf("Precio Aerolineas: $%.2f \n", y); //y = aerolineas
+		printf("a) Precio pagando con debito para Aerolineas: $%.2f \n", precioDebAerolineas);
+		printf("b) Precio pagando con credito para Aerolineas: $%.2f \n", precioCredAerolineas);
+		printf("c) Precio pagando con Bitcoin para Aerolineas: %.6f BTC \n", precioBitAerolineas);
+		printf("d) Precio unitario Aerolineas: $%.2f \n \n", precioUnitAerolineas);
 
-		printf("Precio Latam: %.2f \n", z); //y
-		printf("a) Precio pagando con debito para Latam: %.2f \n", precioDebLatam);
-		printf("b) Precio pagando con credito para Latam: %.2f \n", precioCredLatam);
-		printf("c) Precio pagando con Bitcoin para Latam: %.2f \n", precioBitLatam);
-		printf("d) Precio unitario Latam: %.2f \n \n", precioUnitLatam);
+		printf("Precio Latam: $%.2f \n", z); //z = latam
+		printf("a) Precio pagando con debito para Latam: $%.2f \n", precioDebLatam);
+		printf("b) Precio pagando con credito para Latam: $%.2f \n", precioCredLatam);
+		printf("c) Precio pagando con Bitcoin para Latam: %.6f BTC \n", precioBitLatam);
+		printf("d) Precio unitario Latam: $%.2f \n \n", precioUnitLatam);
 
-		printf("Precio Aerolineas: %.2f \n", y); //aerolineas
-		printf("a) Precio pagando con debito para Aerolineas: %.2f \n", precioDebAerolineas);
-		printf("b) Precio pagando con credito para Aerolineas: %.2f \n", precioCredAerolineas);
-		printf("c) Precio pagando con Bitcoin para Aerolineas: %.2f \n", precioBitAerolineas);
-		printf("d) Precio unitario Aerolineas: %.2f \n \n", precioUnitAerolineas);
-
-		printf("Diferencia de precio: %.2f \n \n", precioDif);
+		printf("Diferencia de precio: $%.2f \n", precioDif);
+		printf("------------------------------------------------------------------------------------\n");
 		break;
 
 	case 5:
@@ -97,7 +97,7 @@ int main(void) {
 		break;
 
 	case 6:
-		printf("HAS SALIDO DEL PROGRAMA. \n \n");
+		printf("\n---------------------------------------------------------------------------------\nUSTED HA SALIDO DEL PROGRAMA.\n---------------------------------------------------------------------------------\n \n");
 		break;
 	default:
 		printf("Incorrecto, por favor ingrese un numero del 1 al 6. \n \n");
